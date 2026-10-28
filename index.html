@@ -3,333 +3,226 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🧟末日觉醒搞笑灵根｜24题测试</title>
+<title>🧟末日觉醒搞笑灵根｜24道选择题</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui, sans-serif;}
 body{
-  background: #1c1c1c;
-  /* 末日暗渐变背景 */
-  background-image: radial-gradient(rgba(80,70,50,0.35) 0%, #141414 75%);
-  color: #e9e3d9;
-  padding:24px 16px;
+  background: #141414;
+  background-image: radial-gradient(rgba(80,80,80,0.15) 1px, transparent 0);
+  background-size: 12px 12px;
+  color:#e2e2e2;
+  padding:20px;
   max-width:560px;
   margin:0 auto;
-  min-height: 100vh;
+  min-height:100vh;
 }
-.page{display:none;}
-.page.active{display:block;}
-
-/* 首页标题 */
+.page{
+  display:none;
+  opacity:0;
+  transition: opacity 0.4s ease;
+}
+.page.active{
+  display:block;
+  opacity:1;
+}
+.card{
+  background: rgba(32,32,36,0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius:16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+  padding:24px;
+}
 .title{
-  font-size:30px;
-  font-weight:700;
-  margin-bottom:14px;
+  font-size:26px;
+  font-weight:bold;
+  margin-bottom:12px;
   text-align:center;
-  color:#ffc864;
-  text-shadow: 0 0 10px rgba(255,170,70,0.35);
-  letter-spacing: 1px;
+  color:#ffb370;
+  letter-spacing:1px;
 }
 .desc{
   text-align:center;
-  margin-bottom:32px;
-  color:#b8b0a6;
-  line-height:1.7;
-  font-size:16px;
+  margin-bottom:24px;
+  color:#bbbbbb;
+  line-height:1.6;
+  font-size:15px;
 }
-
 .progress{
   text-align:center;
-  margin-bottom:24px;
-  font-size:17px;
-  color:#d4a878;
+  margin-bottom:20px;
+  font-size:18px;
+  color:#ffc996;
   font-weight:500;
-  letter-spacing:1px;
 }
-
-/* 【重点：题目放大，和选项拉开差距】 */
 .question{
-  font-size:28px;
-  margin-bottom:26px;
+  font-size:24px;
+  margin-bottom:22px;
   font-weight:600;
-  line-height:1.6;
-  color:#fff8eb;
+  line-height:1.55;
+  color:#f0f0f0;
 }
-
-/* 选项样式，末日磨砂卡片 */
 .option{
-  padding:18px 20px;
-  background:rgba(255,255,255,0.07);
-  border-radius:14px;
-  margin-bottom:14px;
-  border:1px solid rgba(255,200,100,0.22);
+  padding:16px 18px;
+  background:rgba(50,50,55,0.65);
+  border-radius:12px;
+  margin-bottom:12px;
+  border:1px solid rgba(255,255,255,0.07);
   cursor:pointer;
   transition:0.25s ease;
   font-size:17px;
-  color:#e9e3d9;
-  backdrop-filter: blur(4px);
+  color:#e4e4e4;
 }
 .option:hover{
-  border-color:#ffc864;
-  background:rgba(255,200,100,0.12);
+  background:rgba(70,70,76,0.8);
+  border-color:#ffb370;
   transform: translateY(-2px);
 }
 .option.selected{
-  background:rgba(255,200,100,0.22);
-  border-color:#ffc864;
-  box-shadow: 0 0 12px rgba(255,200,100,0.25);
+  background:linear-gradient(135deg,#ff9f43,#d47c28);
+  border-color:#ffb370;
+  color:#111;
+  font-weight:500;
 }
-
 .btn-wrap{
-  margin-top:34px;
+  margin-top:28px;
   display:flex;
-  gap:16px;
+  gap:14px;
   justify-content:center;
 }
 button{
-  padding:13px 26px;
+  padding:13px 22px;
   border:none;
   border-radius:12px;
   font-size:16px;
   cursor:pointer;
-  transition:0.2s;
-  font-weight:500;
+  transition:0.2s ease;
 }
 #prevBtn{
-  background:rgba(255,255,255,0.1);
-  color:#ddd;
-  border:1px solid rgba(255,255,255,0.18);
+  background:rgba(80,80,85,0.6);
+  color:#eee;
 }
 #prevBtn:disabled{
   opacity:0.35;
   cursor:not-allowed;
-  transform: none;
-}
-#prevBtn:hover:not(:disabled){
-  background:rgba(255,255,255,0.16);
+  transform:none;
 }
 #nextBtn{
-  background:#ff9b33;
-  color:#1a1a1a;
-  font-weight:600;
+  background:linear-gradient(135deg,#ff9f43,#d47c28);
+  color:#111;
+  font-weight:500;
 }
-#nextBtn:hover{
-  background:#ffb35c;
+button:hover:not(:disabled){
   transform: translateY(-2px);
-}
-
-/* 结果页面：垂直居中！ */
-#resultPage{
-  min-height: 90vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+  box-shadow:0 4px 14px rgba(255,159,67,0.25);
 }
 .result-box{
-  background:rgba(255,255,255,0.06);
-  backdrop-filter: blur(8px);
-  padding:34px 28px;
-  border-radius:18px;
-  border:1px solid rgba(255,200,100,0.25);
-  margin-top:24px;
-  line-height:1.9;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+  margin-top:20px;
+  text-align:center;
 }
 .result-name{
-  font-size:28px;
+  font-size:26px;
   font-weight:bold;
-  margin-bottom:16px;
-  color:#ffc864;
-  text-align:center;
-  text-shadow: 0 0 8px rgba(255,170,70,0.3);
+  margin-bottom:14px;
+  color:#ffb370;
 }
-.result-desc{
-  font-size:17px;
-  color:#e2ddd4;
+.result-text{
+  line-height:1.8;
+  font-size:16px;
+  color:#dddddd;
 }
-.restart-wrap{
-  text-align:center;
+.start-wrap{
   margin-top:32px;
+  text-align:center;
 }
-.restart-wrap button{
-  background:#ff9b33;
-  color:#1a1a1a;
-  font-weight:600;
-  padding:14px 30px;
-  font-size:17px;
-}
-
-/* 首页居中 */
-#startPage{
-  min-height: 90vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-#startPage button{
-  background:#ff9b33;
-  color:#1a1a1a;
-  font-weight:600;
-  padding:14px 32px;
+#startBtn{
+  background:linear-gradient(135deg,#ff9f43,#d47c28);
+  color:#111;
+  font-weight:bold;
   font-size:18px;
-  margin-top:12px;
+  padding:14px 32px;
 }
 </style>
 </head>
 <body>
 
 <div id="startPage" class="page active">
-  <div class="title">🧟末日觉醒搞笑灵根</div>
-  <div class="desc">24道选择题｜凭第一直觉选择！<br>看看你觉醒哪一种末日灵根</div>
-  <div style="text-align:center;margin-top:32px;">
-    <button onclick="startQuiz()">开始测试</button>
+  <div class="card">
+    <div class="title">🧟末日觉醒搞笑灵根</div>
+    <div class="desc">一共24题，凭第一直觉选择，看看你觉醒什么搞笑灵根</div>
+    <div class="start-wrap">
+      <button id="startBtn" onclick="startQuiz()">开始测试</button>
+    </div>
   </div>
 </div>
 
 <div id="quizPage" class="page">
-  <div class="progress" id="progressText"></div>
-  <div class="question" id="qText"></div>
-  <div id="optWrap"></div>
-  <div class="btn-wrap">
-    <button id="prevBtn" onclick="goPrev()">上一题</button>
-    <button id="nextBtn" onclick="goNext()">下一题</button>
+  <div class="card">
+    <div class="progress" id="progressText"></div>
+    <div class="question" id="qText"></div>
+    <div id="optWrap"></div>
+    <div class="btn-wrap">
+      <button id="prevBtn" onclick="goPrev()">上一题</button>
+      <button id="nextBtn" onclick="goNext()">下一题</button>
+    </div>
   </div>
 </div>
 
 <div id="resultPage" class="page">
-  <div class="title">你的灵根结果</div>
-  <div class="result-box">
+  <div class="card result-box">
+    <div class="title">你的灵根结果</div>
     <div class="result-name" id="resName"></div>
-    <div class="result-desc" id="resText"></div>
+    <div class="result-text" id="resText"></div>
   </div>
-  <div class="restart-wrap">
+  <div style="text-align:center;margin-top:24px;">
     <button onclick="restart()">重新测一次</button>
   </div>
 </div>
 
 <script>
-// 维度定义
-const dimKeys = ["A","B","C","D","E","F"];
-const dimNames = {
-  A:"干饭灵根",
-  B:"躺平苟活灵根",
-  C:"嘴强王者灵根",
-  D:"欧皇幸运灵根",
-  E:"摸鱼划水灵根",
-  F:"末日社牛灵根"
-};
-const dimDesc = {
-  A:"干饭灵根：末世生存第一要义就是干饭！别人拼装备拼武力，你到处搜寻美食，口粮就是你的力量源泉，只要还有一口好吃的，你就永远不会倒下。",
-  B:"躺平苟活灵根：主打一个稳字当头，不冒无意义的险，擅长寻找掩体隐藏自己。危机来临时你总能巧妙避开，苟到最后就是胜利。",
-  C:"嘴强王者灵根：三寸不烂之舌是你的最强武器。善于沟通调解、说服他人，很多刀光剑影的冲突，靠你的话术就能化解。",
-  D:"欧皇幸运灵根：命运格外偏爱你！总能在绝境里撞上好运，捡到物资、躲开危险，很多难题不需要复杂计划，运气帮你通关。",
-  E:"摸鱼划水灵根：生存的最高境界是省力。能不动就不动，能少干就少干，用最低消耗安稳活下去，摆烂也是一种生存智慧。",
-  F:"末日社牛灵根：人脉就是你的护身符。擅长结识幸存者、拉拢伙伴抱团，在末世里你永远不缺队友，众人拾柴，一起求生。"
-};
-
-// 24道题目
+// 题目库
 const questions = [
-  {
-    q:"丧尸爆发，你醒来第一件事？",
-    opts:["A 翻找家里还有啥吃的，先囤口粮","B 赶紧关好门窗，找隐蔽角落先躲起来","C 打开通讯，试着安抚慌乱的邻居","D 随便选条路跑路，赌一把运气","E 先躺着刷会儿手机，看看外面情况再说","F 立刻联系身边所有能联系上的人组队"]
-  },
-  {
-    q:"出门搜寻物资，你的首要目标？",
-    opts:["A 罐头、零食、饮用水，吃的最重要","B 找坚固掩体，遇到危险能立刻躲","C 和幸存者交流，打听周边局势","D 随便逛逛，说不定能捡到宝贝","E 能少走就少走，尽量找轻松的活","F 主动认识新的幸存者小队"]
-  },
-  {
-    q:"遇到丧尸追你，你会？",
-    opts:["A 边跑边看附近有没有小卖部","B 火速找地方藏起来，绝不硬刚","C 大声呼喊，想办法引开/劝队友配合","D 赌一把，选个小路突围碰碰运气","E 找个地方先歇着，等丧尸自己走开","F 呼喊队友一起抱团应对"]
-  },
-  {
-    q:"团队分配任务，你想选？",
-    opts:["A 负责寻找食物，伙食官","B 守基地躲着，不出去冒险","C 调解矛盾，负责沟通谈判","D 随缘，分到啥算啥","E 轻松一点的，能偷懒最好","F 负责拉拢更多幸存者入伙"]
-  },
-  {
-    q:"团队有人吵架内讧，你会？",
-    opts:["A 先劝大家吃饱了再吵","B 不想掺和，躲远点免得被波及","C 站出来调解，动之以情晓之以理","D 静观其变，看谁运气更好","E 假装没听见，继续摸鱼","F 拉拢两边，撮合和好组队"]
-  },
-  {
-    q:"突然听到外面巨大异响，你？",
-    opts:["A 想着是不是有新的物资点","B 先躲起来，看看情况再决定","C 喊大家一起商量怎么应对","D 碰碰运气，去看看热闹","E 不想动，等别人去探路","F 赶紧喊上队友一起去查看"]
-  },
-  {
-    q:"只剩最后一点食物，你会？",
-    opts:["A 优先保证自己能吃饱，再考虑队友","B 藏起来慢慢吃，保住自己活下去","C 和大家商量怎么公平分配","D 赌一把，出去找找有没有更多吃的","E 能少吃就少吃，懒得争抢","F 和队友协商，一起规划后续觅食"]
-  },
-  {
-    q:"要去高危区域探路，你？",
-    opts:["A 去可以，但必须先保证有好吃的作为奖励","B 我不去，我留守基地更安全","C 我去沟通，看看能不能和别的小队一起","D 去就去，说不定能捡到好东西","E 能推就推，不想跑危险的路","F 主动邀约队友组队一起去"]
-  },
-  {
-    q:"发现一处空的避难所，你首先？",
-    opts:["A 看看有没有遗留的食物","B 检查安不安全，适合长期躲吗","C 联系其他人，商量要不要一起住","D 运气真好！居然被我找到了","E 先歇一会儿，不想马上收拾","F 通知更多幸存者过来一起入住"]
-  },
-  {
-    q:"队友不小心闯祸了，你？",
-    opts:["A 先安慰，带点吃的安抚情绪","B 赶紧离远点，别被牵连","C 帮忙劝说，想办法补救","D 看后续运气，说不定能化险为夷","E 不关我事，继续摸鱼","F 发动人脉，找人一起帮忙解决"]
-  },
-  {
-    q:"休息的时候，你最想？",
-    opts:["A 大吃一顿，好好犒劳自己","B 安安静静躲着休息，养精蓄锐","C 和队友聊天谈心","D 期待下一次好运降临","E 躺着摆烂，能不动就不动","F 认识更多新朋友，聊聊各自经历"]
-  },
-  {
-    q:"遇到陌生幸存者，你第一反应？",
-    opts:["A 问问对方有没有食物可以交换","B 先观察，小心对方有危险，躲远点","C 主动开口沟通，了解对方情况","D 赌一把，对方是好人还是坏人","E 不想打交道，懒得应酬","F 主动搭话，拉对方加入我们小队"]
-  },
-  {
-    q:"要长期驻守基地，你负责？",
-    opts:["A 食物采集与储存","B 基地隐蔽防御，方便躲藏","C 处理队内沟通、对外交涉","D 随缘，看运气分配","E 轻松的后勤，能偷懒就偷懒","F 对外联络，扩充小队人手"]
-  },
-  {
-    q:"危机暂时解除，你会？",
-    opts:["A 庆祝！先好好吃一顿","B 继续保持警惕，找安全位置待命","C 和大家复盘，沟通接下来计划","D 感叹我们运气真好，活下来了","E 趁机歇着，好好摸鱼放松","F 去和别的小队互通消息"]
-  },
-  {
-    q:"需要有人牺牲自己引开丧尸，你？",
-    opts:["A 先吃饱再考虑，不能饿肚子去","B 绝对不去，保命最重要","C 劝说大家想想别的办法，不要硬来","D 看看有没有运气更好的方案","E 能躲就躲，别选我","F 和队友一起商量，看谁更合适"]
-  },
-  {
-    q:"捡到一个大包裹，你首先看？",
-    opts:["A 里面有没有吃的！","B 安不安全，会不会有陷阱","C 能不能用来和别人交换、谈判","D 哇，我的运气也太好了","E 重不重，不想费力搬","F 能不能和队友一起分、一起用"]
-  },
-  {
-    q:"连续几天吃不好，你优先？",
-    opts:["A 想尽一切办法找吃的","B 找地方先稳住，保存体力苟住","C 和队友沟通，一起想办法觅食","D 赌一把，说不定很快就能找到食物","E 躺平休息，减少消耗","F 问问其他小队有没有食物渠道"]
-  },
-  {
-    q:"小队要制定生存规则，你？",
-    opts:["A 重点写好伙食分配条款","B 优先保证安全躲藏的条款","C 参与讨论，调解大家的意见","D 随缘，怎么定都行","E 希望任务不要安排太多给我","F 多考虑怎么吸纳更多伙伴"]
-  },
-  {
-    q:"夜里听见外面有人呼救，你？",
-    opts:["A 先想想救了有没有食物回报","B 谨慎，先躲好观察，别贸然出去","C 先喊话沟通，了解情况","D 赌一把，说不定是好人","E 不想动，等别人去看","F 喊上队友一起前去帮忙"]
-  },
-  {
-    q:"发现一条不知道通向哪里的小路，你？",
-    opts:["A 看看沿路有没有小卖部、食物","B 先评估安不安全，不好就不进","C 和队友商量要不要一起探路","D 碰碰运气，说不定是逃生通道","E 能不走就不走，太麻烦","F 邀约伙伴一起去探探"]
-  },
-  {
-    q:"队友想拉你主动出击，你？",
-    opts:["A 可以，但是要先备好干粮","B 不去！主动出击风险太大","C 先沟通，分析利弊再决定","D 看运气，说不定能大获全胜","E 能推脱就推脱，不想折腾","F 可以，多叫上几个队友一起"]
-  },
-  {
-    q:"好不容易找到水源，你？",
-    opts:["A 赶紧搭配食物，好好补给","B 保护好水源，方便以后躲在这里","C 和大家商量怎么分配、保存","D 我的运气也太好了吧！","E 快点喝完，然后歇着","F 通知其他伙伴一起来取水"]
-  },
-  {
-    q:"突然天降大雨，行动受阻，你？",
-    opts:["A 趁下雨看看能不能找到被冲出来的物资","B 关好庇护所，安心躲起来","C 和队友沟通，调整后续计划","D 希望雨快点停，运气别变差","E 正好，可以躺着休息摸鱼","F 和别的小队互通雨天的情况"]
-  },
-  {
-    q:"如果末日可以选一个能力，你优先？",
-    opts:["A 无限获取美食的能力","B 随时隐身躲藏的能力","C 能说服所有人的口才","D 逆天改命的超强运气","E 怎么偷懒都不会被发现","F 快速和任何人熟络的社交能力"]
-  }
+  {q:"丧尸爆发，你醒来第一件事？",opts:["A 翻找家里还有啥吃的，先囤口粮","B 赶紧关好门窗，找隐蔽角落先躲起来","C 打开通讯，试着安抚慌乱的邻居","D 随便选条路跑路，赌一把运气","E 先躺着刷会儿手机，看看外面情况再说","F 立刻联系身边所有能联系上的人组队"]},
+  {q:"出门搜寻物资，你的首要目标？",opts:["A 罐头、零食、饮用水，吃的最重要","B 找坚固掩体，遇到危险能立刻躲","C 和幸存者交流，打听周边局势","D 随便逛逛，说不定能捡到宝贝","E 能少走就少走，尽量找轻松的活","F 主动认识新的幸存者小队"]},
+  {q:"遇到丧尸追你，你会？",opts:["A 边跑边看附近有没有小卖部","B 火速找地方藏起来，绝不硬刚","C 大声呼喊，想办法引开/劝队友配合","D 赌一把，选个小路突围碰碰运气","E 找个地方先歇着，等丧尸自己走开","F 呼喊队友一起抱团应对"]},
+  {q:"团队分配任务，你想选？",opts:["A 负责寻找食物，伙食官","B 守基地躲着，不出去冒险","C 调解矛盾，负责沟通谈判","D 随缘，分到啥算啥","E 轻松一点的，能偷懒最好","F 负责拉拢更多幸存者入伙"]},
+  {q:"团队有人吵架内讧，你会？",opts:["A 先劝大家吃饱了再吵","B 不想掺和，躲远点免得被波及","C 站出来调解，动之以情晓之以理","D 静观其变，看谁运气更好","E 假装没听见，继续摸鱼","F 拉拢两边，撮合和好组队"]},
+  {q:"突然听到外面巨大异响，你？",opts:["A 想着是不是有新的物资点","B 先躲起来，看看情况再决定","C 喊大家一起商量怎么应对","D 碰碰运气，去看看热闹","E 不想动，等别人去探路","F 赶紧喊上队友一起去查看"]},
+  {q:"只剩最后一点食物，你会？",opts:["A 优先保证自己能吃饱，再考虑队友","B 藏起来慢慢吃，保住自己活下去","C 和大家商量怎么公平分配","D 赌一把，出去找找有没有更多吃的","E 能少吃就少吃，懒得争抢","F 和队友协商，一起规划后续觅食"]},
+  {q:"要去高危区域探路，你？",opts:["A 去可以，但必须先保证有好吃的作为奖励","B 我不去，我留守基地更安全","C 我去沟通，看看能不能和别的小队一起","D 去就去，说不定能捡到好东西","E 能推就推，不想跑危险的路","F 主动邀约队友组队一起去"]},
+  {q:"发现一处空的避难所，你首先？",opts:["A 看看有没有遗留的食物","B 检查安不安全，适合长期躲吗","C 联系其他人，商量要不要一起住","D 运气真好！居然被我找到了","E 先歇一会儿，不想马上收拾","F 通知更多幸存者过来一起入住"]},
+  {q:"队友不小心闯祸了，你？",opts:["A 先安慰，带点吃的安抚情绪","B 赶紧离远点，别被牵连","C 帮忙劝说，想办法补救","D 看后续运气，说不定能化险为夷","E 不关我事，继续摸鱼","F 发动人脉，找人一起帮忙解决"]},
+  {q:"休息的时候，你最想？",opts:["A 大吃一顿，好好犒劳自己","B 安安静静躲着休息，养精蓄锐","C 和队友聊天谈心","D 期待下一次好运降临","E 躺着摆烂，能不动就不动","F 认识更多新朋友，聊聊各自经历"]},
+  {q:"遇到陌生幸存者，你第一反应？",opts:["A 问问对方有没有食物可以交换","B 先观察，小心对方有危险，躲远点","C 主动开口沟通，了解对方情况","D 赌一把，对方是好人还是坏人","E 不想打交道，懒得应酬","F 主动搭话，拉对方加入我们小队"]},
+  {q:"要长期驻守基地，你负责？",opts:["A 食物采集与储存","B 基地隐蔽防御，方便躲藏","C 处理队内沟通、对外交涉","D 随缘，看运气分配","E 轻松的后勤，能偷懒就偷懒","F 对外联络，扩充小队人手"]},
+  {q:"危机暂时解除，你会？",opts:["A 庆祝！先好好吃一顿","B 继续保持警惕，找安全位置待命","C 和大家复盘，沟通接下来计划","D 感叹我们运气真好，活下来了","E 趁机歇着，好好摸鱼放松","F 去和别的小队互通消息"]},
+  {q:"需要有人牺牲自己引开丧尸，你？",opts:["A 先吃饱再考虑，不能饿肚子去","B 绝对不去，保命最重要","C 劝说大家想想别的办法，不要硬来","D 看看有没有运气更好的方案","E 能躲就躲，别选我","F 和队友一起商量，看谁更合适"]},
+  {q:"捡到一个大包裹，你首先看？",opts:["A 里面有没有吃的！","B 安不安全，会不会有陷阱","C 能不能用来和别人交换、谈判","D 哇，我的运气也太好了","E 重不重，不想费力搬","F 能不能和队友一起分、一起用"]},
+  {q:"连续几天吃不好，你优先？",opts:["A 想尽一切办法找吃的","B 找地方先稳住，保存体力苟住","C 和队友沟通，一起想办法觅食","D 赌一把，说不定很快就能找到食物","E 躺平休息，减少消耗","F 问问其他小队有没有食物渠道"]},
+  {q:"小队要制定生存规则，你？",opts:["A 重点写好伙食分配条款","B 优先保证安全躲藏的条款","C 参与讨论，调解大家的意见","D 随缘，怎么定都行","E 希望任务不要安排太多给我","F 多考虑怎么吸纳更多伙伴"]},
+  {q:"夜里听见外面有人呼救，你？",opts:["A 先想想救了有没有食物回报","B 谨慎，先躲好观察，别贸然出去","C 先喊话沟通，了解情况","D 赌一把，说不定是好人","E 不想动，等别人去看","F 喊上队友一起前去帮忙"]},
+  {q:"发现一条不知道通向哪里的小路，你？",opts:["A 看看沿路有没有小卖部、食物","B 先评估安不安全，不好就不进","C 和队友商量要不要一起探路","D 碰碰运气，说不定是逃生通道","E 能不走就不走，太麻烦","F 邀约伙伴一起去探探"]},
+  {q:"队友想拉你主动出击，你？",opts:["A 可以，但是要先备好干粮","B 不去！主动出击风险太大","C 先沟通，分析利弊再决定","D 看运气，说不定能大获全胜","E 能推脱就推脱，不想折腾","F 可以，多叫上几个队友一起"]},
+  {q:"好不容易找到水源，你？",opts:["A 赶紧搭配食物，好好补给","B 保护好水源，方便以后躲在这里","C 和大家商量怎么分配、保存","D 我的运气也太好了吧！","E 快点喝完，然后歇着","F 通知其他伙伴一起来取水"]},
+  {q:"突然天降大雨，行动受阻，你？",opts:["A 趁下雨看看能不能找到被冲出来的物资","B 关好庇护所，安心躲起来","C 和队友沟通，调整后续计划","D 希望雨快点停，运气别变差","E 正好，可以躺着休息摸鱼","F 和别的小队互通雨天的情况"]},
+  {q:"如果末日可以选一个能力，你优先？",opts:["A 无限获取美食的能力","B 随时隐身躲藏的能力","C 能说服所有人的口才","D 逆天改命的超强运气","E 怎么偷懒都不会被发现","F 快速和任何人熟络的社交能力"]}
+];
+
+// 结果库 A干饭｜B躺平苟活｜C嘴强王者｜D欧皇幸运｜E摸鱼划水｜F末日社牛
+const resultList = [
+  {name:"干饭灵根",text:"末日生存第一准则：人是铁饭是钢！别的幸存者忙着打怪跑路，你一心搜寻美食。食物就是你的力量源泉，只要还有一口好吃的，你就永远不会垮掉！"},
+  {name:"躺平苟活灵根",text:"苟道天花板！不冒没必要的险，优先保全自身。危机来临第一反应就是躲藏，不争不抢，稳扎稳打，靠着谨慎小心安稳活到末世结局。"},
+  {name:"嘴强王者灵根",text:"全靠一张嘴行走废土！擅长调解矛盾、谈判游说，很多凶险的局面不用动手，靠沟通就能化解。三寸不烂之舌，是你最强的生存武器。"},
+  {name:"欧皇幸运灵根",text:"天选幸运儿！遇事爱赌一把，总能在绝境撞上好运。危险常常擦肩而过，宝物主动送上门，运气就是你在末世最大的底牌。"},
+  {name:"摸鱼划水灵根",text:"末世摆烂大师！能歇就歇，能推就推，主打一个省力生存。不主动揽麻烦，减少消耗，在乱糟糟的末日里稳稳守住自己的舒适区。"},
+  {name:"末日社牛灵根",text:"废土人脉王！擅长结识各路幸存者，快速组队抱团。朋友遍布各个小队，遇到难处总有伙伴伸出援手，团结就是你的生存秘诀。"}
 ];
 
 let current = 0;
-// 保存每一题选中的选项索引 0=A,1=B,2=C,3=D,4=E,5=F
 let answer = [];
+let score = [0,0,0,0,0,0]; // A B C D E F
 
+// 渲染题目
 function render(){
   const total = questions.length;
   const q = questions[current];
@@ -369,48 +262,53 @@ function goNext(){
     render();
   }else{
     calcResult();
+    showResult();
   }
 }
 
-// 计分+同分随机兜底
+// 计分 + 同分随机兜底
 function calcResult(){
-  let score = {A:0,B:0,C:0,D:0,E:0,F:0};
-  answer.forEach(idx=>{
-    const key = dimKeys[idx];
-    score[key] += 1;
+  score = [0,0,0,0,0,0];
+  answer.forEach(v=>{
+    score[v]++;
   })
-  // 找最高分
-  let maxVal = -1;
-  let candidates = [];
-  for(let k of dimKeys){
-    if(score[k] > maxVal){
-      maxVal = score[k];
-      candidates = [k];
-    }else if(score[k] === maxVal){
-      candidates.push(k);
-    }
+}
+function showResult(){
+  const max = Math.max(...score);
+  // 找出所有最高分的下标
+  const candidates = [];
+  for(let i=0;i<score.length;i++){
+    if(score[i] === max) candidates.push(i);
   }
   // 同分随机选一个
-  const finalKey = candidates[Math.floor(Math.random()*candidates.length)];
-  document.getElementById("resName").innerText = dimNames[finalKey];
-  document.getElementById("resText").innerText = dimDesc[finalKey];
+  const idx = candidates[Math.floor(Math.random() * candidates.length)];
+  const r = resultList[idx];
+  document.getElementById("resName").innerText = r.name;
+  document.getElementById("resText").innerText = r.text;
   switchPage("resultPage");
+  window.scrollTo(0,0);
 }
 
 function startQuiz(){
   current = 0;
   answer = [];
+  score = [0,0,0,0,0,0];
   render();
   switchPage("quizPage");
+  window.scrollTo(0,0);
 }
 function restart(){
   current = 0;
   answer = [];
+  score = [0,0,0,0,0,0];
   switchPage("startPage");
+  window.scrollTo(0,0);
 }
 function switchPage(id){
   document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
+  setTimeout(()=>{
+    document.getElementById(id).classList.add("active");
+  },30);
 }
 </script>
 </body>
